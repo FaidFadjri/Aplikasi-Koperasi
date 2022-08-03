@@ -22,4 +22,9 @@ class BisnisModel extends Model
     {
         return $this->select('*')->get()->toArray();
     }
+
+    public function _getBusinessById($businessId)
+    {
+        return $this->select('*')->where('businessId', '=', $businessId)->get()->toArray();
+    }
 }

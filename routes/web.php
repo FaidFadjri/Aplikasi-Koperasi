@@ -37,6 +37,7 @@ Route::group(['prefix' => 'bisnis'], function () {
     //-------- Pages function
     Route::get('/', [Bisnis::class, 'index']);
     Route::get('sampah', [Bisnis::class, 'sampah']);
+    Route::get('overview/{bisnisId}', [Bisnis::class, 'overview']);
 
     //-------- Non pages function
     Route::post('get_pic', [Bisnis::class, '_getPic']);
@@ -45,4 +46,8 @@ Route::group(['prefix' => 'bisnis'], function () {
     Route::post('force_delete', [Bisnis::class, '_forceDelete']);
     Route::post('restore_bisnis', [Bisnis::class, '_restoreBisnis']);
     Route::post('restore_all', [Bisnis::class, '_restoreAll']);
+
+    //---------- Reporting non pages function
+    Route::post('add_transaksi', [Bisnis::class, '_addTransaksi']);
+    Route::post('add_kategori', [Bisnis::class, '_addKategori']);
 });

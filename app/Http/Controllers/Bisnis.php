@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BisnisKategori;
 use App\Models\BisnisModel;
 use App\Models\UserModels;
 use Illuminate\Http\Request;
@@ -30,6 +31,15 @@ class Bisnis extends Controller
         $business = BisnisModel::onlyTrashed()->get()->toArray();
         $components['business'] = $business;
         return view('bisnis.sampah', $components);
+    }
+
+    public function overview($businessId)
+    {
+        //----- Ambil data bisnis kategori barang untuk keperluan transaksi
+        $businessCategory         = BisnisKategori::select('*')->where('businessId', $businessId)->get()->toArray();
+        $components['businessId'] = $businessId;
+        $components['kategori']   = $businessCategory;
+        return view('bisnis.overview', $components);
     }
 
 
@@ -163,6 +173,84 @@ class Bisnis extends Controller
 
             if ($delete) {
                 return response()->json($businessId, 200);
+            }
+        }
+    }
+
+
+    //------------- Bisnis Reporting function
+    public function _addTransaksi()
+    {
+        if (request()->ajax()) {
+            $transaksi          = '';
+            $tanggal_transaksi  = '';
+            $businessId = '';
+
+            // if (isset($_POST['transaksi'])) {
+            //     $transaksi = $_POST['transaksi'];
+            // }
+
+            // if (isset($_POST['tanggal_transaksi'])) {
+            //     $tanggal_transaksi = $_POST['tanggal_transaksi'];
+            // }
+
+            // if (isset($_POST['businessId'])) {
+            //     $businessId = $_POST['businessId'];
+            // }
+
+
+            // $business = $this->bisnis->_getBusinessById($businessId);
+            // if (!$business) {
+            //     return response()->json('business is undefined', 403);
+            // }
+
+            // //----- Insert ke database
+            // $insert = BisnisKategori::create([
+            //     'name'           => $kategori,
+            //     'description'    => $keterangan,
+            //     'businessId'     => $businessId
+            // ]);
+
+            // if ($insert) {
+            //     return response()->json('Berhasil Menambahkan Kategori', 200);
+            // }
+        }
+    }
+
+    public function _addKategori()
+    {
+        if (request()->ajax()) {
+            $kategori   = '';
+            $keterangan = '';
+            $businessId = '';
+
+            if (isset($_POST['kategori'])) {
+                $kategori = $_POST['kategori'];
+            }
+
+            if (isset($_POST['keterangan'])) {
+                $keterangan = $_POST['keterangan'];
+            }
+
+            if (isset($_POST['businessId'])) {
+                $businessId = $_POST['businessId'];
+            }
+
+
+            $business = $this->bisnis->_getBusinessById($businessId);
+            if (!$business) {
+                return response()->json('business is undefined', 403);
+            }
+
+            //----- Insert ke database
+            $insert = BisnisKategori::create([
+                'name'           => $kategori,
+                'description'    => $keterangan,
+                'businessId'     => $businessId
+            ]);
+
+            if ($insert) {
+                return response()->json('Berhasil Menambahkan Kategori', 200);
             }
         }
     }

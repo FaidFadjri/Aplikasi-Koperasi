@@ -30,7 +30,7 @@
                             </p>
                             <a href="" class="btn btn-outline-secondary btn-delete"
                                 data-id="{{ $row['businessId'] }}">Nonaktifkan Bisnis</a>
-                            <a href="" class="btn btn-secondary">Cek Laporan</a>
+                            <a href="/bisnis/overview/{{ $row['businessId'] }}" class="btn btn-secondary">Cek Laporan</a>
                         </div>
                     </div>
                 </div>
