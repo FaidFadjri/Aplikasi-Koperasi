@@ -18,4 +18,9 @@ class UserModels extends Model
             ->where('email', $email)->get()->first();
         return $user;
     }
+
+    public function _getAllMember()
+    {
+        return $this->select('*')->get()->toArray();
+    }
 }

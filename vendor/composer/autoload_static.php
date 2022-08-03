@@ -519,6 +519,7 @@ class ComposerStaticInit21dfc964ca095248558a47ff98f75067
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Authentication' => __DIR__ . '/../..' . '/app/Http/Controllers/Authentication.php',
+        'App\\Http\\Controllers\\Bisnis' => __DIR__ . '/../..' . '/app/Http/Controllers/Bisnis.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Dashboard' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

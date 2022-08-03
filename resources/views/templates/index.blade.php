@@ -32,33 +32,7 @@
 
 <body>
     <section>
-        <nav class="navbar-area">
-            <a href="" class="navbar-logo">
-                Akastra Link
-            </a>
-
-            <ul class="navbar-item">
-                <li class="navbar-link">Overview</li>
-                <li class="navbar-link dropdown-nav" id="bisnis">
-                    Bisnis <ion-icon name="chevron-down-outline"></ion-icon>
-
-                    <ul class="navbar-dropdown d-none" id="bisnisDropdown">
-                        <li class="navbar-dropdown-item">
-                            <ion-icon name="git-network-outline"></ion-icon> Usaha
-                        </li>
-                        <li class="navbar-dropdown-item">
-                            <ion-icon name="document-text-outline"></ion-icon>Report
-                        </li>
-                    </ul>
-                </li>
-                <li class="navbar-link">Tabungan</li>
-                <li class="navbar-link">Simpan / Pinjam</li>
-            </ul>
-
-            <div class="profile-wrap">
-                <button class="logout-button">Logout</button>
-            </div>
-        </nav>
+        @include('templates.items.navbar')
         <div class="background-area"></div>
 
         @yield('content')
